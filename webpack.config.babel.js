@@ -33,6 +33,14 @@ const base = {
       { test: /\.jsx?$/, exclude: /node_modules/, use: ['babel-loader'] },
       { test: /\.less$/, exclude: /node_modules/, use: ['style-loader', 'css-loader', 'less-loader'] }
     ]
+  },
+  resolve: {
+    alias: {
+      Components: path.join(__dirname, 'src/components/'),
+      Pages: path.join(__dirname, 'src/pages/')
+    },
+    modules: [path.resolve(__dirname, '/'), 'node_modules'],
+    extensions: ['.js', '.less']
   }
 };
 

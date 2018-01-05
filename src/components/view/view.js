@@ -1,17 +1,10 @@
+import './index.less';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 export const ViewRow = ({ children, style, className, onBlur }) => {
-  const newStyle = {
-    display:            'flex',
-    flexFlow:           'row',
-    justifyContent:     'center',
-    alignItems:         'center',
-    flex:               1,
-    ...style
-  };
   return (
-    <div style={newStyle} className={className || ''} onBlur={onBlur}>
+    <div style={style} className={'view-row ' + (className || '')} onBlur={onBlur}>
       {children}
     </div>
   )
@@ -23,16 +16,8 @@ ViewRow.propTypes = {
 };
 
 export const ViewCol = ({ children, style, className, onBlur }) => {
-  const newStyle = {
-    display:            'flex',
-    flexFlow:           'column',
-    justifyContent:     'center',
-    alignItems:         'center',
-    flex:               1,
-    ...style
-  };
   return (
-    <div style={newStyle} className={className || ''} onBlur={onBlur}>
+    <div style={style} className={'view-col ' + (className || '')} onBlur={onBlur}>
       {children}
     </div>
   )

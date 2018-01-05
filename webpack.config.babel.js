@@ -9,7 +9,10 @@ const environmentPlugin = new webpack.DefinePlugin({
 
 const devConfig = {
   devtool: 'source-map',
-  devServer: { hot: true },
+  devServer: {
+    hot: true,
+    historyApiFallback: true
+  },
   plugins: [
     environmentPlugin,
     new webpack.NamedModulesPlugin(), // make it easier to see which dependencies are being patched

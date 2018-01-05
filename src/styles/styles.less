@@ -1,3 +1,7 @@
+@import './colors.less';
+@import './fonts.less';
+@import './layouts.less';
+
 // Global Styles
 
 // http://meyerweb.com/eric/tools/css/reset/
@@ -35,3 +39,69 @@ a {
   outline: 0;
   text-decoration: none;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color:                     @text-primary;
+  font-family:               @header-family; }
+h1 { font-size:                 @h1-size; }
+h2 { font-size:                 @h2-size; }
+h3 { font-size:                 @h3-size; }
+h4 { font-size:                 @h4-size; }
+h5 { font-size:                 @h5-size; font-style: italic }
+h6 { font-size:                 @h6-size; }
+
+p  {
+  color:                      @text-primary;
+  font-size:                  @p-size;
+  font-family:                @body-family;
+  line-height:                @body-leading-spacing; }
+
+a  {
+  color:                      @a;
+  font-size:                  @a-size;
+  font-family:                @header-family;
+  line-height:                @body-leading-spacing;
+  &:hover                     { color: @a-hover; };
+  &:active                    { color: @a-active; };
+  &:visited                   { color: @a-visited; }; }
+
+ul, ol {
+  color:                      @text-primary;
+  display:                    block;
+  font-size:                  @li-size;
+  font-family:                @body-family;
+  line-height:                @body-leading-spacing;
+  list-style-type:            square;
+  margin:                     1em 0;
+  padding-left:               40px; }
+
+hr {
+  border:                     0;
+  border-top:                 1px solid @white-4;
+  display:                    block;
+  height:                     1px;
+  margin:                     @mar-rel-s 0;
+  padding:                    0; }
+
+button {
+  font-family: @header-family;
+  font-size: @button-size;
+}
+
+input {
+  border:                     none;
+  color:                      @input-text;
+  font-family:                @body-family;
+  font-size:                  @input-size;
+  min-height:                 2rem;
+  width:                      100%;
+  &:active                    {
+    border: -1px solid @input-active;
+    color: @text-primary
+  };
+  &:focus                     {
+    border: -1px solid @accent;
+    color: @text-primary
+  };
+  &:disabled                  { border: -1px solid @input-disabled; }; }
+

@@ -4,8 +4,8 @@ import { ViewCol } from 'Components/view/view';
 
 const Home = () => (
   <ViewCol>
-    <h1>this is home</h1>
-    <p>by jlee</p>
+    <h1>Canvas Demos</h1>
+    <p style={{paddingBottom: '1rem'}}>by jlee</p>
     <Navigation />
   </ViewCol>
 );

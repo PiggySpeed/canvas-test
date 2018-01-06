@@ -8,6 +8,32 @@ class SimpleGrid extends React.Component {
     this.drawSquareGrid();
   }
 
+  drawTriangleGrid = () => {
+    this.clearCanvas();
+
+    const WIDTH = 500;
+    const HEIGHT = 300;
+    const inc = 25; // increment (base of triangle)
+    const height = inc * Math.cos(Math.PI / 6);
+
+    const cvs = document.getElementById('simple-grid');
+    const ctx = cvs.getContext('2d');
+
+    // draw squares per row and height
+    ctx.beginPath();
+    for (let y = 0; y <= HEIGHT; y += height) {
+      for (let x = 0; x <= WIDTH; x += inc) {
+        ctx.moveTo(x, y + height);       // bottom left
+        ctx.lineTo(x + inc/2, y);        // top middle
+        ctx.lineTo(x + inc, y + height); // bottom right
+        ctx.lineTo(x, y + height);       // back to bottom left
+      }
+    }
+    ctx.closePath();
+    ctx.fillStyle = '#5299a8';
+    ctx.fill();
+  };
+
   drawSquareGrid = () => {
     this.clearCanvas();
 
@@ -72,6 +98,7 @@ class SimpleGrid extends React.Component {
         <ViewRow className="simple-grid-nav">
           <a className="simple-grid-anchor-tag" href="#" onClick={this.drawLineGrid}>Lines</a>
           <a className="simple-grid-anchor-tag" href="#" onClick={this.drawSquareGrid}>Squares</a>
+          <a className="simple-grid-anchor-tag" href="#" onClick={this.drawTriangleGrid}>Triangles</a>
         </ViewRow>
       </ViewCol>
     )

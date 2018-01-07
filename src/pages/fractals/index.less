@@ -1,0 +1,38 @@
+@import '../../styles/styles.less';
+
+// layout styles
+.fractals-container {
+  justify-content: center;
+  width: 100%;
+}
+
+.fractals-canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.fractals-nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  flex: none;
+  z-index: 10;
+}
+
+.fractals-anchor-tag {
+  color: @white-1;
+  padding: 0 @pad-rel-s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: @white-1;
+  }
+}

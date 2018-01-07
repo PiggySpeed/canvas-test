@@ -5,11 +5,58 @@ import { ViewCol, ViewRow } from 'Components/view/view';
 
 class Fractals extends React.Component {
   componentDidMount() {
-    // this.drawSquareGrid();
+    this.drawSierpinskiTriangles();
   }
 
   drawSierpinskiTriangles = () => {
     this.clearCanvas();
+    const cvs = document.getElementById('fractals');
+    const ctx = cvs.getContext('2d');
+    const START_X = window.innerWidth / 2;
+    const START_Y = window.innerHeight / 4;
+    const INITIAL_SIZE = 600;
+
+    console.log(START_X, START_Y);
+
+    /**
+     * draws an equilateral triangle
+     * - ctx: canvas context
+     * - x, y: coordinates for the top left corner of the bounding square
+    **/
+    const drawTriangle = (ctx, x, y, size) => {
+      const height = size;
+      // const height = size * Math.cos(Math.PI / 6);
+      ctx.moveTo(x, y + height);        // bottom left
+      ctx.lineTo(x + size/2, y);        // top middle
+      ctx.lineTo(x + size, y + height); // bottom right
+      ctx.lineTo(x, y + height);        // back to bottom left
+    };
+
+    const drawSierpinski = (ctx, x, y, size) => {
+      if (size < 10) {
+        drawTriangle(ctx, x, y, size);
+      }
+      else {
+        console.log('drawing');
+        const newSize = size/3;
+
+        // top triangle
+        drawSierpinski(ctx, x + (newSize/2), y, newSize);
+
+        // bottom-left triangle
+        drawSierpinski(ctx, x, y + newSize, newSize);
+
+        // bottom-right triangle
+        drawSierpinski(ctx, x + newSize, y + newSize, newSize);
+      }
+    };
+
+    ctx.beginPath();
+    drawSierpinski(ctx, START_X, START_Y, INITIAL_SIZE);
+    ctx.closePath();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+
   };
 
   clearCanvas = () => {

@@ -8,6 +8,44 @@ class Fractals extends React.Component {
     this.drawSierpinskiTriangles();
   }
 
+  drawSierpinskiCarpet = () => {
+    this.clearCanvas();
+    const cvs = document.getElementById('fractals');
+    const ctx = cvs.getContext('2d');
+    const START_X = cvs.width / 2;
+    const START_Y = cvs.height / 2;
+    const INITIAL_SIZE = 600;
+
+    const drawSquare = (ctx, x, y, size) => {
+      ctx.rect(x, y, size, size);
+    };
+
+    const drawSierpinski = (ctx, x, y, size) => {
+      if (size < 5) {
+        drawSquare(ctx, x, y, size);
+      } else {
+        const newSize = size/3;
+
+        drawSierpinski(ctx, x - newSize, y - newSize, newSize); // top left
+        drawSierpinski(ctx, x,           y - newSize, newSize); // top middle
+        drawSierpinski(ctx, x + newSize, y - newSize, newSize); // top right
+
+        drawSierpinski(ctx, x - newSize, y, newSize); // middle left
+        drawSierpinski(ctx, x + newSize, y, newSize); // middle right
+
+        drawSierpinski(ctx, x - newSize, y + newSize, newSize); // bottom left
+        drawSierpinski(ctx, x,           y + newSize, newSize); // bottom middle
+        drawSierpinski(ctx, x + newSize, y + newSize, newSize); // bottom right
+      }
+    };
+
+    ctx.beginPath();
+    drawSierpinski(ctx, START_X, START_Y, INITIAL_SIZE);
+    ctx.closePath();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+  };
+
   drawSierpinskiTriangles = () => {
     this.clearCanvas();
     const cvs = document.getElementById('fractals');
@@ -75,7 +113,7 @@ class Fractals extends React.Component {
         </canvas>
         <ViewRow className="fractals-nav">
           <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiTriangles}>Sierpinski</a>
-          <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiTriangles}>Fractals 2</a>
+          <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiCarpet}>Carpet</a>
           <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiTriangles}>Fractals 3</a>
         </ViewRow>
       </ViewCol>

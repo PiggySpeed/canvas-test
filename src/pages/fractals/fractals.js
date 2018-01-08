@@ -12,11 +12,9 @@ class Fractals extends React.Component {
     this.clearCanvas();
     const cvs = document.getElementById('fractals');
     const ctx = cvs.getContext('2d');
-    const START_X = window.innerWidth / 2;
-    const START_Y = window.innerHeight / 4;
+    const START_X = cvs.width / 4;
+    const START_Y = cvs.height / 8;
     const INITIAL_SIZE = 600;
-
-    console.log(START_X, START_Y);
 
     /**
      * draws an equilateral triangle
@@ -24,8 +22,7 @@ class Fractals extends React.Component {
      * - x, y: coordinates for the top left corner of the bounding square
     **/
     const drawTriangle = (ctx, x, y, size) => {
-      const height = size;
-      // const height = size * Math.cos(Math.PI / 6);
+      const height = size * Math.cos(Math.PI / 6); // this looks sharper than height = size
       ctx.moveTo(x, y + height);        // bottom left
       ctx.lineTo(x + size/2, y);        // top middle
       ctx.lineTo(x + size, y + height); // bottom right
@@ -37,8 +34,8 @@ class Fractals extends React.Component {
         drawTriangle(ctx, x, y, size);
       }
       else {
-        console.log('drawing');
-        const newSize = size/3;
+        // console.log('drawing', x, y, size);
+        const newSize = size/2;
 
         // top triangle
         drawSierpinski(ctx, x + (newSize/2), y, newSize);
@@ -56,7 +53,6 @@ class Fractals extends React.Component {
     ctx.closePath();
     ctx.fillStyle = '#FFFFFF';
     ctx.fill();
-
   };
 
   clearCanvas = () => {
@@ -70,7 +66,12 @@ class Fractals extends React.Component {
     return(
       <ViewCol className="fractals-container">
         <BackButton />
-        <canvas id="fractals" style={{backgroundColor: '#c67621'}} className="fractals-canvas">
+        <canvas
+          id="fractals"
+          style={{backgroundColor: '#c67621'}}
+          className="fractals-canvas"
+          width={window.innerWidth}
+          height={window.innerHeight}>
         </canvas>
         <ViewRow className="fractals-nav">
           <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiTriangles}>Sierpinski</a>

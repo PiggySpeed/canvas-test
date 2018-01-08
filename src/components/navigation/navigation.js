@@ -6,7 +6,7 @@ const Navigation = () => (
   <div className='navigation-container'>
     <Link className="nav-link" to='simple-grid'>simple-grid</Link>
     <Link className="nav-link" to='fractals'>fractals</Link>
-    <Link className="nav-link" to='canvas-3'>Canvas 3</Link>
+    <Link className="nav-link" to='simple-3d'>simple-3d</Link>
   </div>
 );
 

@@ -112,7 +112,7 @@ class Fractals extends React.Component {
           height={window.innerHeight}>
         </canvas>
         <ViewRow className="fractals-nav">
-          <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiTriangles}>Sierpinski</a>
+          <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiTriangles}>Triangle</a>
           <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiCarpet}>Carpet</a>
           <a className="fractals-anchor-tag" href="#" onClick={this.drawSierpinskiTriangles}>Fractals 3</a>
         </ViewRow>

@@ -1,0 +1,36 @@
+@import '../../styles/styles.less';
+
+// layout styles
+.simple-3d-container {
+  justify-content: center;
+  width: 100%;
+}
+
+.simple-3d-canvas {
+  position: absolute;
+}
+
+.simple-3d-nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  flex: none;
+  z-index: 10;
+}
+
+.simple-3d-anchor-tag {
+  color: @white-1;
+  padding: 0 @pad-rel-s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: @white-1;
+  }
+}

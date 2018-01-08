@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './home/home';
 import SimpleGrid from './simple-grid/simple-grid.js';
 import Fractals from './fractals/fractals';
-import Canvas3 from './canvas-3/canvas3';
+import Simple3d from './simple-3d/simple-3d';
 import { ViewCol } from 'Components/view/view';
 
 const Main = () => (
@@ -12,7 +12,7 @@ const Main = () => (
       <Route exact path='/' component={Home} />
       <Route path='/simple-grid' component={SimpleGrid} />
       <Route path='/fractals' component={Fractals} />
-      <Route path='/canvas-3' component={Canvas3} />
+      <Route path='/simple-3d' component={Simple3d} />
     </ViewCol>
   </BrowserRouter>
 );
